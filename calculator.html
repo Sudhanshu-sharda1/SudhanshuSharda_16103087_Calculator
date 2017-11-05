@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Calculator</title>
+    <style>
+        #class{
+            position: absolute;
+            left:35%;
+            
+        }
+                input{
+            position:relative;
+            top:50px;
+            background-color: orange;
+            
+        }
+        
+        body{
+            background-size: cover;
+        }
+           .dropdown {
+    position: relative;
+    display:inline-block;
+    top:50px;
+}
+
+.dropdown-content {
+    display:none;
+    position: absolute;
+    background-color: transparent;
+    min-width: 315px;
+    box-shadow: 0px 8px 16px 0px rgba(10,0,0,5);
+    padding: 12px 16px;
+    z-index: 1;
+    top:5px;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+</style>
+    
+</head>
+     
+<body style="background-color: black">
+    <div id="class">
+        <h1 style="background-color: orange">JAVASCRIPT CALCULATOR</h1>
+        <form name="calculator"> 
+        <input name="display"  placeholder="0" style="width: 410px;height:50px;text-align:left;">
+        <br><br>
+        <div class="dropdown">
+            <span><button style="height:50px;width:100px;background-color: orange;">SCIENTIFIC</button></span>
+            <div class="dropdown-content">
+                <input type="button" value="SIN" onclick="sin_function(eval(calculator.display.value))" style="background-color: orange; height:50px;width:100px;">
+                <input type="button" value="COS" onclick="cos_function(eval(calculator.display.value))" style="background-color: orange; height:50px;width:100px;">
+                <input type="button" value="TAN" onclick="tan_function(eval(document.calculator.display.value))" style="background-color: orange; height:50px;width:100px;">
+                <input type="button" value="ln" onclick="natlog()" style="background-color: orange; height:50px;width:100px;">
+                <input type="button" value="x^2" onclick="square()" style="background-color: orange; height:50px;width:100px;">
+                <input type="button" value="x^3" onclick="cube()" style="background-color: orange; height:50px;width:100px;">
+                <input type="button" value="Fact!" onclick="document.calculator.display.value=factorial(calculator.display.value)" style="background-color: orange; height:50px;width:100px;">
+                <input type="button" value="Sqrt" onclick="sqrt()" style="background-color: orange; height:50px;width:100px;">
+                <input type="button" value="e" onclick="euler()" style="background-color: orange; height:50px;width:100px;">
+            </div>
+        </div>
+        <input type="button" value="C" onClick="document.calculator.display.value=' '" style="background-color:orange;height:50px;width:100px;" >
+        <input type="button" value="/" onClick="operator('/')" style="background-color:orange;height:50px;width:100px;" >
+        <input type="button" value="x" onClick="operator('*')" style="background-color:orange;height:50px;width:100px;">
+        <br>
+        <input type="button" value="7" onClick="number('7')" style="height:50px;width:100px;background-color: white;">
+        <input type="button" value="8" onClick="number('8')" style="height:50px;width:100px;background-color: white;">
+        <input type="button" value="9" onClick="number('9')"style="height:50px;width:100px;background-color: white;">
+        <input type="button" value="-" onClick="operator('-')" style="background-color: orange; height:50px;width:100px;">
+        <br>
+        <input type="button" value="4" onClick="number('4')" style="height:50px;width:100px;background-color: white;">
+        <input type="button" value="5" onClick="number('5')" style="height:50px;width:100px;background-color: white;">
+        <input type="button" value="6" onClick="number('6')" style="height:50px;width:100px;background-color: white;">
+        <input type="button" value="+" onClick="operator('+')" style="background-color: orange; height:50px;width:100px;">
+        <br>
+        <input type="button" value="1" onClick="number('1')" style="height:50px;width:100px;background-color: white;">
+        <input type="button" value="2" onClick="number('2')" style="height:50px;width:100px;background-color: white;">
+        <input type="button" value="3" onClick="number('3')" style="height:50px;width:100px;background-color: white;">
+        <input type="button" value="MOD" onClick="operator('%')" style="background-color: orange; height:50px;width:100px;">
+        <br>
+        <input type="button" value="." onClick="operator('.')" style="height:50px;width:100px;background-color: white;">
+        <input type="button" value="0" onClick="document.calculator.display.value+='0'" style="height:50px;width:100px;background-color: white;">
+        <input type="button" value="=" onClick= "equalto(calculator.display.value)" style="background-color: orange; height:50px;width:100px;">
+        <input type="button" value="<-" onClick="back(this.form)" style="background-color: orange; height:50px;width:100px;">
+        </form>
+    </div>
+<SCRIPT>
+    var flag=0,count=0;
+   function sin_function(ans){
+document.calculator.display.value=Math.sin(ans*Math.PI/180);
+       flag=1;
+   }
+    function cos_function(ans){
+document.calculator.display.value=Math.cos(ans*Math.PI/180);
+        flag=1;
+    }
+    function tan_function(ans){
+document.calculator.display.value=Math.tan(ans*Math.PI/180);
+        flag=1;
+    }
+ function square(){
+        calculator.display.value=calculator.display.value*calculator.display.value;
+        flag=1;
+    }
+    function cube(){
+        calculator.display.value=calculator.display.value*calculator.display.value*calculator.display.value;
+        flag=1;
+    }
+    function natlog(){
+        calculator.display.value=Math.log(calculator.display.value);
+        flag=1;
+    }
+    function sqrt(){
+        calculator.display.value=Math.sqrt(calculator.display.value);
+        flag=1;
+    }
+    function euler(){
+        calculator.display.value+=Math.E;
+        flag=1;
+    }
+    function back(){
+var size = calculator.display.value.length;
+calculator.display.value=calculator.display.value.substring(0,size-1);
+}
+    function factorial(n) {
+  if (n == 0) {
+    return 1;flag=1;
+  }
+  return n * factorial(n - 1);
+}
+   
+  function equalto(){
+    calculator.display.value=eval(calculator.display.value);
+      if(calculator.display.value=="Infinity"){
+          calculator.display.value="Invalid";}
+    flag=1;count=0;
+}
+    function operator(a){
+        if(count==0)
+        {
+            calculator.display.value+=a;
+            flag=0;count=1;
+        }
+        else 
+            flag=0;
+       
+    
+    }
+function number(a){
+    if(flag==1){
+        calculator.display.value=a;
+        flag=0;count=0;
+    }
+    else{
+    calculator.display.value+=a;
+    count=0;
+}
+}
+document.onkeydown=function(event){
+        var key_code=event.keyCode;
+    
+    if(key_code==13){
+        flag=1;
+        event.preventDefault();
+        equalto();
+        
+        
+    }
+    
+    }
+
+    </SCRIPT>
+       </body>
+</html>
